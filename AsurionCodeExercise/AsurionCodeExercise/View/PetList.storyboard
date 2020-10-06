@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hIn-wy-XwV">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Pet List View Controller-->
+        <scene sceneID="BGE-9x-IJK">
+            <objects>
+                <viewController id="Jlp-EO-qU5" customClass="PetListViewController" customModule="AsurionCodeExercise" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7jZ-8u-esj">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PCk-ln-ne6">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Jlp-EO-qU5" id="9zl-OG-EwS"/>
+                                    <outlet property="delegate" destination="Jlp-EO-qU5" id="enj-SD-tvN"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="PCk-ln-ne6" firstAttribute="top" secondItem="emH-h9-akz" secondAttribute="top" id="00u-cq-oIt"/>
+                            <constraint firstItem="emH-h9-akz" firstAttribute="bottom" secondItem="PCk-ln-ne6" secondAttribute="bottom" id="0C7-UY-sq7"/>
+                            <constraint firstItem="PCk-ln-ne6" firstAttribute="leading" secondItem="emH-h9-akz" secondAttribute="leading" id="Pq4-Io-yUE"/>
+                            <constraint firstItem="emH-h9-akz" firstAttribute="trailing" secondItem="PCk-ln-ne6" secondAttribute="trailing" id="So6-b3-Lg0"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="emH-h9-akz"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="NTt-Yb-WJL"/>
+                    <connections>
+                        <outlet property="tableView" destination="PCk-ln-ne6" id="gHF-Ds-XJH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jH2-yK-0fQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="659" y="157"/>
+        </scene>
+        <!--Pet Details View Controller-->
+        <scene sceneID="Egd-aJ-a3H">
+            <objects>
+                <viewController storyboardIdentifier="PetDetailsViewController" id="d5V-sD-IuX" customClass="PetDetailsViewController" customModule="AsurionCodeExercise" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QDz-zf-OPy">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="M3F-8D-qxx"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JPX-v3-XrR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1310" y="157"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="JVB-nB-Ecg">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hIn-wy-XwV" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Iqs-9d-rwt">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Jlp-EO-qU5" kind="relationship" relationship="rootViewController" id="m2o-hR-d7V"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="heB-2g-0oi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5.7971014492753632" y="156.69642857142856"/>
+        </scene>
+    </scenes>
+</document>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="KGk-i7-Jjw" customClass="OfficeHoursTableViewCell" customModule="AsurionCodeExercise" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pIh-bu-ldj">
+                        <rect key="frame" x="20" y="5" width="280" height="50"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Office Hours: M-F 10:00 - 18:00" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X3a-HI-jsx">
+                                <rect key="frame" x="14" y="16" width="252" height="18"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="X3a-HI-jsx" firstAttribute="centerX" secondItem="pIh-bu-ldj" secondAttribute="centerX" id="5Qm-3t-dvV"/>
+                            <constraint firstItem="X3a-HI-jsx" firstAttribute="centerY" secondItem="pIh-bu-ldj" secondAttribute="centerY" id="9NR-Oy-702"/>
+                            <constraint firstItem="X3a-HI-jsx" firstAttribute="width" secondItem="pIh-bu-ldj" secondAttribute="width" multiplier="0.9" id="CpY-aR-YlD"/>
+                            <constraint firstAttribute="height" constant="50" id="ela-NK-Als"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="pIh-bu-ldj" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="LVv-Fy-Ufp"/>
+                    <constraint firstAttribute="trailing" secondItem="pIh-bu-ldj" secondAttribute="trailing" constant="20" id="QUr-VK-U0b"/>
+                    <constraint firstItem="pIh-bu-ldj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="bE7-Ox-94I"/>
+                    <constraint firstAttribute="bottom" secondItem="pIh-bu-ldj" secondAttribute="bottom" constant="10" id="gIj-91-Bgr"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="borderView" destination="pIh-bu-ldj" id="OhC-Bq-w0z"/>
+                <outlet property="officeHoursLabel" destination="X3a-HI-jsx" id="tHx-II-alv"/>
+            </connections>
+            <point key="canvasLocation" x="-78.260869565217391" y="8.3705357142857135"/>
+        </tableViewCell>
+    </objects>
+</document>
