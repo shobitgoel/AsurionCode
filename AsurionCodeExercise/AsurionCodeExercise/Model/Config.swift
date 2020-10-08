@@ -9,7 +9,7 @@
 import Foundation
 
 enum DaysofaWeek: Int {
-    case Sunday = 1, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Unknown = -1
+    case Sunday = 1, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
 }
 
 struct Config: Decodable {
@@ -18,32 +18,63 @@ struct Config: Decodable {
     let workHours: String
     
     // Return (start day, end day, start time hour, start time minute, end time hour, end time minute)
-    func getDecodedWorkHours() -> (DaysofaWeek?, DaysofaWeek?, Int, Int, Int, Int) {
+    func getDecodedWorkHours() -> (DaysofaWeek, DaysofaWeek, Int, Int, Int, Int)? {
+        
+        var decodedString: (DaysofaWeek, DaysofaWeek, Int, Int, Int, Int)?
+        
+        var output_startDay: DaysofaWeek!
+        var output_endDay: DaysofaWeek!
+        
+        var output_startTimeHour: Int!
+        var output_startTimeMinute: Int!
+        
+        var output_endTimeHour: Int!
+        var output_endTimeMinute: Int!
+        
         let daysTimeArray = workHours.split(separator: " ", maxSplits: 1)
         
-        let daysArray = daysTimeArray[0].split(separator: "-")
-        let startDay = daysArray[0]
-        let endDay = daysArray[1]
+        if daysTimeArray.count == 2 {
+            let daysArray = daysTimeArray[0].split(separator: "-")
+            let timeArray =  daysTimeArray[1].split(separator: "-")
+            if daysArray.count == 2  && timeArray.count == 2 {
+                
+                guard let startWeekDay = getDayOfaWeek(day: String(daysArray[0])), let endWeekDay = getDayOfaWeek(day: String(daysArray[1])) else {
+                    return nil
+                }
+                output_startDay = startWeekDay
+                output_endDay = endWeekDay
+                
+                guard let startTime = getHoursMinutes(time: String(timeArray[0])), let endTime = getHoursMinutes(time: String(timeArray[1])) else {
+                    return nil
+                }
+                output_startTimeHour = startTime.0
+                output_startTimeMinute = startTime.1
+                output_endTimeHour = endTime.0
+                output_endTimeMinute = endTime.1
+                
+                decodedString = (output_startDay, output_endDay, output_startTimeHour, output_startTimeMinute, output_endTimeHour, output_endTimeMinute)
+            }
+        }
         
-        let timeArray =  daysTimeArray[1].split(separator: "-")
-        let startTime = getHoursMinutes(time: String(timeArray[0]))
-        let endTime = getHoursMinutes(time: String(timeArray[1]))
-        
-        return (getDayOfaWeek(day: String(startDay)), getDayOfaWeek(day: String(endDay)),
-                startTime.0, startTime.1,
-                endTime.0, endTime.1)
+        return decodedString
     }
     
-    private func getHoursMinutes(time: String) -> (Int, Int) {
+    private func getHoursMinutes(time: String) -> (Int, Int)? {
         let trimmedTimeString = time.trimmingCharacters(in: .whitespaces)
         let hourMinuteArray = trimmedTimeString.split(separator: ":")
-        let hour = hourMinuteArray[0]
-        let minute = hourMinuteArray[1]
-        return (Int(hour)!, Int(minute)!)
+        if hourMinuteArray.count == 2 {
+            let hour = hourMinuteArray[0]
+            let minute = hourMinuteArray[1]
+            guard let h = Int(hour), let m = Int(minute) else {
+                return nil
+            }
+            return (h, m)
+        }
+        return nil
     }
     
-    private func getDayOfaWeek(day: String) -> DaysofaWeek {
-        let dayOfWeek: DaysofaWeek
+    private func getDayOfaWeek(day: String) -> DaysofaWeek? {
+        let dayOfWeek: DaysofaWeek?
         switch day {
         case "Sun":
             dayOfWeek = .Sunday
@@ -60,7 +91,7 @@ struct Config: Decodable {
         case "Sat":
             dayOfWeek = .Saturday
         default:
-            dayOfWeek = .Unknown
+            dayOfWeek = nil
         }
         return dayOfWeek
     }

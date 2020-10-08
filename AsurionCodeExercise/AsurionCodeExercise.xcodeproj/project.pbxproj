@@ -27,11 +27,10 @@
 		B98E93ED252AFEE100F0646A /* ConfigViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98E93EC252AFEE000F0646A /* ConfigViewModel.swift */; };
 		B98E9400252C385D00F0646A /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98E93FF252C385D00F0646A /* Config.swift */; };
 		B98E9402252C387600F0646A /* Pet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98E9401252C387600F0646A /* Pet.swift */; };
-		B98E940B252C692C00F0646A /* AsurionCodeExerciseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98E940A252C692C00F0646A /* AsurionCodeExerciseTests.swift */; };
 		B98E9413252C695F00F0646A /* DataServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98E9412252C695F00F0646A /* DataServiceTests.swift */; };
-		B98E9415252C6A4D00F0646A /* DataServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98E9414252C6A4D00F0646A /* DataServiceProtocol.swift */; };
 		B98E9418252C6B5A00F0646A /* MockDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98E9417252C6B5A00F0646A /* MockDataService.swift */; };
 		B98E941B252ECBC600F0646A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B98E941A252ECBC600F0646A /* Localizable.strings */; };
+		B98E9421252F01C800F0646A /* ConfigTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98E9420252F01C800F0646A /* ConfigTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,12 +67,11 @@
 		B98E93FF252C385D00F0646A /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		B98E9401252C387600F0646A /* Pet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pet.swift; sourceTree = "<group>"; };
 		B98E9408252C692C00F0646A /* AsurionCodeExerciseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AsurionCodeExerciseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B98E940A252C692C00F0646A /* AsurionCodeExerciseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsurionCodeExerciseTests.swift; sourceTree = "<group>"; };
 		B98E940C252C692C00F0646A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B98E9412252C695F00F0646A /* DataServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataServiceTests.swift; sourceTree = "<group>"; };
-		B98E9414252C6A4D00F0646A /* DataServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataServiceProtocol.swift; sourceTree = "<group>"; };
 		B98E9417252C6B5A00F0646A /* MockDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataService.swift; sourceTree = "<group>"; };
 		B98E941A252ECBC600F0646A /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		B98E9420252F01C800F0646A /* ConfigTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,7 +146,6 @@
 			children = (
 				B98E93DD2529BB5200F0646A /* DataDecoder.swift */,
 				B98E93DF2529BBD500F0646A /* DataService.swift */,
-				B98E9414252C6A4D00F0646A /* DataServiceProtocol.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -192,9 +189,9 @@
 		B98E9409252C692C00F0646A /* AsurionCodeExerciseTests */ = {
 			isa = PBXGroup;
 			children = (
+				B98E9420252F01C800F0646A /* ConfigTests.swift */,
 				B98E9416252C6B3C00F0646A /* Mock */,
 				B98E9412252C695F00F0646A /* DataServiceTests.swift */,
-				B98E940A252C692C00F0646A /* AsurionCodeExerciseTests.swift */,
 				B98E940C252C692C00F0646A /* Info.plist */,
 			);
 			path = AsurionCodeExerciseTests;
@@ -338,7 +335,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B98E9415252C6A4D00F0646A /* DataServiceProtocol.swift in Sources */,
 				B94D0121252738FD0052568C /* AppDelegate.swift in Sources */,
 				B98E93E42529C2F900F0646A /* ImageCache.swift in Sources */,
 				B98E93ED252AFEE100F0646A /* ConfigViewModel.swift in Sources */,
@@ -360,8 +356,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B98E940B252C692C00F0646A /* AsurionCodeExerciseTests.swift in Sources */,
 				B98E9413252C695F00F0646A /* DataServiceTests.swift in Sources */,
+				B98E9421252F01C800F0646A /* ConfigTests.swift in Sources */,
 				B98E9418252C6B5A00F0646A /* MockDataService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

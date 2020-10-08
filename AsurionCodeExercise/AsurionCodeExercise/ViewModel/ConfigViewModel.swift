@@ -54,39 +54,41 @@ class ConfigViewModel {
     
     func callChatAlertMessage() -> String {
         var message = outsideWorkHoursMessage
-        if (isNowTimeWithinWorkHours()) {
+        if let withInWorkHours = isNowTimeWithinWorkHours(), withInWorkHours == true {
             message = withinWorkHoursMessage
         }
         return message
     }
     
-    private func isNowTimeWithinWorkHours() -> Bool {
+    private func isNowTimeWithinWorkHours() -> Bool? {
         
         var isYes = false
         
         let calendar = Calendar.current
         let now = Date()
         
-        let decodedWorkHours = config?.getDecodedWorkHours()
+        guard let decodedWorkHours = config?.getDecodedWorkHours() else {
+            return nil
+        }
         
-        let startDay = decodedWorkHours!.0?.rawValue
-        let endDay = decodedWorkHours!.1?.rawValue
+        let startDay = decodedWorkHours.0.rawValue
+        let endDay = decodedWorkHours.1.rawValue
         
         let start_time_today = calendar.date(
-            bySettingHour: decodedWorkHours!.2,
-            minute: decodedWorkHours!.3,
+            bySettingHour: decodedWorkHours.2,
+            minute: decodedWorkHours.3,
             second: 0,
             of: now)!
         
         let end_time_today = calendar.date(
-            bySettingHour: decodedWorkHours!.4,
-            minute: decodedWorkHours!.5,
+            bySettingHour: decodedWorkHours.4,
+            minute: decodedWorkHours.5,
             second: 0,
             of: now)!
         
         if now >= start_time_today &&
             now <= end_time_today &&
-            startDay!...endDay! ~= calendar.component(.weekday, from: now)
+            startDay...endDay ~= calendar.component(.weekday, from: now)
         {
             isYes = true
         }

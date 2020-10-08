@@ -17,39 +17,74 @@ class DataServiceTests: XCTestCase {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
     
-    func testLoadConfigAPIHappyPath() {
+    func testLoadConfigAPIPositiveScenario() {
         
-        let expectation = self.expectation(description: "Load config service test - happy path")
+        let expectation = self.expectation(description: "testLoadConfigAPIPositiveScenario - Test should pass if no error is mocked")
         
-        mockDataService.loadConfig { (config, error) in
-            XCTAssertNil(error)
+        mockDataService.loadConfig { (json, error) in
             
-            guard let config = config else {
+            XCTAssertNil(error)
+            guard let json = json else {
                 XCTFail()
                 return
             }
             
-            XCTAssertNotNil(config)
-            XCTAssertTrue(config.isChatEnabled)
-            XCTAssertTrue(config.isCallEnabled)
-            XCTAssertNotNil(config.workHours)
-            
-            expectation.fulfill()
-            self.waitForExpectations(timeout: 10, handler: nil)
+            do {
+                let jsonData = try JSONSerialization.data(withJSONObject: json, options: [])
+                guard let settings = DataDecoder<Settings>.decode(data: jsonData) else {
+                    XCTFail()
+                    return
+                }
+                XCTAssertNotNil(settings)
+                expectation.fulfill()
+            } catch {
+                XCTFail(error.localizedDescription)
+            }
         }
+        
+        self.waitForExpectations(timeout: 10, handler: nil)
     }
     
-    func testLoadConfigAPIFailurePath() {
+    func testLoadConfigAPINegativeScenario1() {
+        
+        mockDataService.invalidJSON = true
+        
+        let expectation = self.expectation(description: "testLoadConfigAPINegativeScenario1 - Test should handle if invalid json is mocked")
+        
+        mockDataService.loadConfig { (json, error) in
+            
+            XCTAssertNil(error)
+            guard let json = json else {
+                XCTFail()
+                return
+            }
+            
+            do {
+                let jsonData = try JSONSerialization.data(withJSONObject: json, options: [])
+                let settings = DataDecoder<Settings>.decode(data: jsonData)
+                XCTAssertNil(settings)
+                expectation.fulfill()
+            } catch {
+                XCTFail(error.localizedDescription)
+            }
+        }
+        
+        self.waitForExpectations(timeout: 10, handler: nil)
+    }
+    
+    func testLoadConfigAPINegativeScenario2() {
         
         mockDataService.shouldReturnError = true
         
-        let expectation = self.expectation(description: "Load config service test - fail path")
-        mockDataService.loadConfig { (config, error) in
+        let expectation = self.expectation(description: "testLoadConfigAPINegativeScenario2 - Test should handle if error is mocked")
+        
+        mockDataService.loadConfig { (json, error) in
             XCTAssertNotNil(error)
-            XCTAssertNil(config)
+            XCTAssertNil(json)
             expectation.fulfill()
-            self.waitForExpectations(timeout: 10, handler: nil)
         }
+        
+        self.waitForExpectations(timeout: 10, handler: nil)
     }
     
     override func tearDownWithError() throws {
