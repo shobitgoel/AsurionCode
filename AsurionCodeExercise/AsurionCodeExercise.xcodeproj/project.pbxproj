@@ -182,9 +182,8 @@
 		B98E9403252C38BC00F0646A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B98E941C252EE22B00F0646A /* Controller */,
 				B94D0135252739860052568C /* PetList.storyboard */,
-				B94D013725273AC70052568C /* PetListViewController.swift */,
-				B94D013925273ADA0052568C /* PetDetailsViewController.swift */,
 				B94D014725273D560052568C /* TableViewCell */,
 			);
 			path = View;
@@ -215,6 +214,15 @@
 				B98E941A252ECBC600F0646A /* Localizable.strings */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		B98E941C252EE22B00F0646A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B94D013725273AC70052568C /* PetListViewController.swift */,
+				B94D013925273ADA0052568C /* PetDetailsViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

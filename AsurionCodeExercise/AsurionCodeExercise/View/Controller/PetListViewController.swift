@@ -125,7 +125,7 @@ extension PetListViewController {
     
     private func showAlert() {
         let uialert =   UIAlertController(title: nil, message: configViewModel.callChatAlertMessage(), preferredStyle: .alert)
-        uialert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+        uialert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: UIAlertAction.Style.default, handler: nil))
         self.present(uialert, animated: true, completion: nil)
     }
     
