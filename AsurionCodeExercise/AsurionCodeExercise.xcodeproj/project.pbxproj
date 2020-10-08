@@ -183,7 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				B98E941C252EE22B00F0646A /* Controller */,
-				B94D0135252739860052568C /* PetList.storyboard */,
+				B98E941D252EE3D100F0646A /* Storyboard */,
 				B94D014725273D560052568C /* TableViewCell */,
 			);
 			path = View;
@@ -223,6 +223,14 @@
 				B94D013925273ADA0052568C /* PetDetailsViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		B98E941D252EE3D100F0646A /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				B94D0135252739860052568C /* PetList.storyboard */,
+			);
+			path = Storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
