@@ -1,0 +1,12 @@
+/* 
+ Localizable.strings
+ AsurionCodeExercise
+ 
+ Created by Goel, Shobit on 08/10/20.
+ Copyright © 2020 Goel, Shobit. All rights reserved.
+ */
+
+"withinWorkHoursMessage" = "Thank you for getting in touch with us. We'll get back to you as soon as possible";
+"outsideWorkHoursMessage" = "Work hours has ended. Please contact us again on the next work day";
+"call" = "Call";
+"chat" = "Chat";

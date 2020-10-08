@@ -31,6 +31,7 @@
 		B98E9413252C695F00F0646A /* DataServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98E9412252C695F00F0646A /* DataServiceTests.swift */; };
 		B98E9415252C6A4D00F0646A /* DataServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98E9414252C6A4D00F0646A /* DataServiceProtocol.swift */; };
 		B98E9418252C6B5A00F0646A /* MockDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98E9417252C6B5A00F0646A /* MockDataService.swift */; };
+		B98E941B252ECBC600F0646A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B98E941A252ECBC600F0646A /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		B98E9412252C695F00F0646A /* DataServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataServiceTests.swift; sourceTree = "<group>"; };
 		B98E9414252C6A4D00F0646A /* DataServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataServiceProtocol.swift; sourceTree = "<group>"; };
 		B98E9417252C6B5A00F0646A /* MockDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataService.swift; sourceTree = "<group>"; };
+		B98E941A252ECBC600F0646A /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 		B94D011F252738FD0052568C /* AsurionCodeExercise */ = {
 			isa = PBXGroup;
 			children = (
+				B98E9419252ECBA300F0646A /* Resources */,
 				B98E9403252C38BC00F0646A /* View */,
 				B98E93FE252C384B00F0646A /* Model */,
 				B98E93E9252AFB7200F0646A /* ViewModel */,
@@ -206,6 +209,14 @@
 			path = Mock;
 			sourceTree = "<group>";
 		};
+		B98E9419252ECBA300F0646A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B98E941A252ECBC600F0646A /* Localizable.strings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -290,6 +301,7 @@
 				B94D012D252738FE0052568C /* LaunchScreen.storyboard in Resources */,
 				B94D013E25273D000052568C /* ChatCallTableViewCell.xib in Resources */,
 				B94D012A252738FE0052568C /* Assets.xcassets in Resources */,
+				B98E941B252ECBC600F0646A /* Localizable.strings in Resources */,
 				B94D014625273D470052568C /* PetInfoTableViewCell.xib in Resources */,
 				B94D0136252739860052568C /* PetList.storyboard in Resources */,
 				B94D014225273D2E0052568C /* OfficeHoursTableViewCell.xib in Resources */,

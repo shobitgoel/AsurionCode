@@ -20,6 +20,12 @@ class ChatCallTableViewCell: UITableViewCell {
     @IBOutlet weak var chatButton: UIButton!
     @IBOutlet weak var callButton: UIButton!
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        callButton.setTitle(NSLocalizedString("call", comment: ""), for: .normal)
+        chatButton.setTitle(NSLocalizedString("chat", comment: ""), for: .normal)
+    }
+    
     func setPresentationStyle(_ style: PresentationStyle) {
         switch style {
         case .chat:

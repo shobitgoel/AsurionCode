@@ -11,28 +11,28 @@ import Foundation
 class ConfigViewModel {
     
     var config: Config?
-        
+    
     var withinWorkHoursMessage: String {
         get {
-            return "Thank you for getting in touch with us. We'll get back to you as soon as possible"
+            return NSLocalizedString("withinWorkHoursMessage", comment: "")
         }
     }
     
     var outsideWorkHoursMessage: String {
         get {
-            return "Work hours has ended. Please contact us again on the next work day"
+            return NSLocalizedString("outsideWorkHoursMessage", comment: "")
         }
     }
     
-    var isChatEnabled: Bool {
+    var isChatEnabled: Bool? {
         get {
-            return config?.isChatEnabled ?? false
+            return config?.isChatEnabled
         }
     }
     
-    var isCallEnabled: Bool {
+    var isCallEnabled: Bool? {
         get {
-            return config?.isCallEnabled ?? false
+            return config?.isCallEnabled
         }
     }
     
@@ -43,7 +43,7 @@ class ConfigViewModel {
     }
     
     func loadConfig(_ completion: @escaping () -> ()) {
-        DataService.shared.loadConfig{ (config, error) in
+        DataService.shared.loadConfig { (config, error) in
             guard let config = config, error == nil else {
                 return
             }
@@ -52,42 +52,45 @@ class ConfigViewModel {
         }
     }
     
-    // Assumption: Office hours is 9 - 18 Monday to Friday
-    // Should actually come from service in ios convertable date format
-    func isNowTimeWithinWorkHours() -> Bool {
+    func callChatAlertMessage() -> String {
+        var message = outsideWorkHoursMessage
+        if (isNowTimeWithinWorkHours()) {
+            message = withinWorkHoursMessage
+        }
+        return message
+    }
+    
+    private func isNowTimeWithinWorkHours() -> Bool {
         
         var isYes = false
         
         let calendar = Calendar.current
         let now = Date()
         
-        let nine_am_today = calendar.date(
-            bySettingHour: 9,
-            minute: 0,
+        let decodedWorkHours = config?.getDecodedWorkHours()
+        
+        let startDay = decodedWorkHours!.0?.rawValue
+        let endDay = decodedWorkHours!.1?.rawValue
+        
+        let start_time_today = calendar.date(
+            bySettingHour: decodedWorkHours!.2,
+            minute: decodedWorkHours!.3,
             second: 0,
             of: now)!
         
-        let six_pm_today = calendar.date(
-            bySettingHour: 18,
-            minute: 0,
+        let end_time_today = calendar.date(
+            bySettingHour: decodedWorkHours!.4,
+            minute: decodedWorkHours!.5,
             second: 0,
             of: now)!
         
-        if now >= nine_am_today &&
-            now <= six_pm_today &&
-            2...6 ~= calendar.component(.weekday, from: now)
+        if now >= start_time_today &&
+            now <= end_time_today &&
+            startDay!...endDay! ~= calendar.component(.weekday, from: now)
         {
             isYes = true
         }
         
         return isYes
-    }
-    
-    func alertMessage() -> String {
-        var message = outsideWorkHoursMessage
-        if (isNowTimeWithinWorkHours()) {
-            message = withinWorkHoursMessage
-        }
-        return message
     }
 }
