@@ -39,7 +39,7 @@ final class DataService {
     }
 }
 
-extension DataService: DataServiceProtocol {
+extension DataService {
     
     func loadConfig(_ completionHandler: @escaping (Config?, Error?) -> Void) {
         
