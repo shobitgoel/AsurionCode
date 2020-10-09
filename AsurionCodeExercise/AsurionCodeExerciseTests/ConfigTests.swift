@@ -17,8 +17,6 @@ class ConfigTests: XCTestCase {
     
     func testGetDecodedWorkHoursPositiveScenario() {
         
-        let expectation = self.expectation(description: "testGetDecodedWorkHoursPositiveScenario: Test should pass provided valid work hours string")
-        
         let config = Config(isChatEnabled: true, isCallEnabled: true, workHours: "M-F 9:00 - 18:00")
         let decodedWorkHours =  config.getDecodedWorkHours()
         XCTAssertNotNil(decodedWorkHours)
@@ -28,45 +26,27 @@ class ConfigTests: XCTestCase {
         XCTAssertEqual(0, decodedWorkHours?.3)
         XCTAssertEqual(18, decodedWorkHours?.4)
         XCTAssertEqual(0, decodedWorkHours?.5)
-        expectation.fulfill()
-        
-        self.waitForExpectations(timeout: 5, handler: nil)
     }
     
     func testGetDecodedWorkHoursNegativeScenario1() {
         
-        let expectation = self.expectation(description: "testGetDecodedWorkHoursNegativeScenario1: Test should pass provided invalid work hours string")
-        
         let config = Config(isChatEnabled: true, isCallEnabled: true, workHours: "M-F9:00 - 18:00")
         let decodedWorkHours =  config.getDecodedWorkHours()
         XCTAssertNil(decodedWorkHours)
-        expectation.fulfill()
-        
-        self.waitForExpectations(timeout: 5, handler: nil)
     }
     
     func testGetDecodedWorkHoursNegativeScenario2() {
         
-        let expectation = self.expectation(description: "testGetDecodedWorkHoursNegativeScenario2: Test should pass provided empty work hours string")
-        
         let config = Config(isChatEnabled: true, isCallEnabled: true, workHours: "")
         let decodedWorkHours =  config.getDecodedWorkHours()
         XCTAssertNil(decodedWorkHours)
-        expectation.fulfill()
-        
-        self.waitForExpectations(timeout: 5, handler: nil)
     }
     
     func testGetDecodedWorkHoursNegativeScenario3() {
         
-        let expectation = self.expectation(description: "testGetDecodedWorkHoursNegativeScenario3: Test should pass provided random work hours string")
-        
         let config = Config(isChatEnabled: true, isCallEnabled: true, workHours: "aaabbbccc")
         let decodedWorkHours =  config.getDecodedWorkHours()
         XCTAssertNil(decodedWorkHours)
-        expectation.fulfill()
-        
-        self.waitForExpectations(timeout: 5, handler: nil)
     }
     
     override func tearDownWithError() throws {
